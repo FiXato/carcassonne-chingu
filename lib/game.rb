@@ -48,6 +48,7 @@ class Game < Chingu::Window
       :right => :move_right, 
       :up => :move_up, 
       :down => :move_down,
+      :space => :rotate_clockwise,
     }
     @current_tile.width = @tile_width
     @current_tile.height = @tile_height

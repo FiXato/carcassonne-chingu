@@ -14,4 +14,9 @@ class CurrentGameTile < GameTile
   def move_down
     @y += height unless (@y + height) >= $window.height
   end
+
+  def rotate_clockwise
+    @angle += 90
+    tile.rotate_clockwise
+  end
 end
