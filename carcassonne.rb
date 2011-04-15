@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 require 'chingu'
 include Gosu
 unless $LOAD_PATH.include?(File.expand_path(File.dirname(__FILE__)))
@@ -10,4 +11,5 @@ require 'game'
 require 'game_tile'
 require 'current_game_tile'
 require 'background_tile'
+require 'grid'
 Game.new.show   # Start the Game update/draw loop!

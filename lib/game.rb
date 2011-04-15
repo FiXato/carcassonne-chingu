@@ -1,14 +1,3 @@
-class Grid
-  attr_accessor :max_tile_x, :max_tile_y, :max_subgrid_x, :max_subgrid_y
-  #, :tiles, :tile_images, :starting_tile, :offset
-  def initialize(width, height, tile_width, tile_height)
-    @max_tile_x = width/tile_width
-    @max_tile_y = height/tile_height
-    @max_subgrid_x = (width/tile_width)*3
-    @max_subgrid_y = (height/tile_height)*3
-  end
-end
-
 class Game < Chingu::Window
   attr_accessor :tile_width, :tile_height,
     :width, :height,
@@ -27,8 +16,12 @@ class Game < Chingu::Window
     draw_grid_background
   end
 
+  def grid
+    $grid
+  end
+
   def create_grid
-    @grid = Grid.new(width, height, tile_width, tile_height)
+    $grid = Grid.new(width, height, tile_width, tile_height)
   end
 
   def draw_grid_background
@@ -49,6 +42,8 @@ class Game < Chingu::Window
       :up => :move_up, 
       :down => :move_down,
       :space => :rotate_clockwise,
+      :enter => :place_tile,
+      :return => :place_tile,
     }
     @current_tile.width = @tile_width
     @current_tile.height = @tile_height
