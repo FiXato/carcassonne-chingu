@@ -1,11 +1,17 @@
 class Tile
   attr_accessor :image_filename, :sub_grid, :rotation
   def initialize
-    @image_filename = "City11we.png"
+    # @image_filename = "City11we.png"
+    # @sub_grid = [
+    #   [[:city],[:meadow],[:city]],
+    #   [[:city],[:meadow],[:city]],
+    #   [[:city],[:meadow],[:city]]
+    # ]
+    @image_filename = "Road-swe - 1.png"
     @sub_grid = [
-      [[:city],[:meadow],[:city]],
-      [[:city],[:meadow],[:city]],
-      [[:city],[:meadow],[:city]]
+      [[:meadow],[:meadow],[:meadow]],
+      [[:road],[:crossing],[:road]],
+      [[:meadow],[:road],[:meadow]]
     ]
     @rotation = 0
   end
