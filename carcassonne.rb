@@ -8,18 +8,19 @@ class Game < Chingu::Window
     :width, :height
 
   def initialize
+    self.input = { :escape => :exit }
+
     @width = 800
     @height = 800
     super(@width,@height,false)
-    self.input = { :escape => :exit }
 
     @tile_width, @tile_height = 100, 100
-    @current_tile = CurrentTile.create({:x=>50, :y=>50})
+    @current_tile = CurrentTile.create({:x => (tile_width / 2), :y => (tile_height / 2)})
     @current_tile.input = {
       :left => :move_left, 
       :right => :move_right, 
       :up => :move_up, 
-      :down => :move_down
+      :down => :move_down,
     }
     @current_tile.width = @tile_width
     @current_tile.height = @tile_height
