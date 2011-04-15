@@ -1,6 +1,18 @@
+class Grid
+  attr_accessor :max_tile_x, :max_tile_y, :max_subgrid_x, :max_subgrid_y
+  #, :tiles, :tile_images, :starting_tile, :offset
+  def initialize(width, height, tile_width, tile_height)
+    @max_tile_x = width/tile_width
+    @max_tile_y = height/tile_height
+    @max_subgrid_x = (width/tile_width)*3
+    @max_subgrid_y = (height/tile_height)*3
+  end
+end
+
 class Game < Chingu::Window
   attr_accessor :tile_width, :tile_height,
-    :width, :height
+    :width, :height,
+    :grid
 
   def initialize
     self.input = { :escape => :exit }
@@ -11,13 +23,18 @@ class Game < Chingu::Window
 
     @tile_width, @tile_height = 100, 100
     create_current_tile
-    create_background
+    create_grid
+    draw_grid_background
   end
 
-  def create_background
-    (0..(width/tile_width)).each do |x_index|
+  def create_grid
+    @grid = Grid.new(width, height, tile_width, tile_height)
+  end
+
+  def draw_grid_background
+    (0..grid.max_tile_x).each do |x_index|
       offset_x = x_index * tile_width + (tile_width / 2)
-      (0..(height/tile_height)).each do |y_index|
+      (0..grid.max_tile_y).each do |y_index|
         offset_y = y_index * tile_height + (tile_height / 2)
         BackgroundTile.create({:image => Image["Outline.png"], :x =>offset_x, :y => offset_y, :zorder => ZORDER[:bg]})
       end
