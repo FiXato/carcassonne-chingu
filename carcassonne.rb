@@ -47,7 +47,7 @@ class Game < Chingu::Window
   end
 end
 
-class Tile < Chingu::GameObject
+class GameTile < Chingu::GameObject
   trait :bounding_box, :scale => 1.0, :debug => true
   attr_accessor :width, :height
 
@@ -56,7 +56,7 @@ class Tile < Chingu::GameObject
   end
 end
 
-class CurrentTile < Tile
+class CurrentTile < GameTile
   def move_left
     @x -= width unless @x <= width
   end
