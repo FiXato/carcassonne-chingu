@@ -15,16 +15,7 @@ class Game < Chingu::Window
     super(@width,@height,false)
 
     @tile_width, @tile_height = 100, 100
-    @current_tile = CurrentTile.create({:x => (tile_width / 2), :y => (tile_height / 2)})
-    @current_tile.input = {
-      :left => :move_left, 
-      :right => :move_right, 
-      :up => :move_up, 
-      :down => :move_down,
-    }
-    @current_tile.width = @tile_width
-    @current_tile.height = @tile_height
-
+    create_current_tile
     create_background
   end
 
@@ -36,6 +27,18 @@ class Game < Chingu::Window
         BackgroundTile.create({:image => Image["Outline.png"], :x =>offset_x, :y => offset_y, :zorder => ZORDER[:bg]})
       end
     end
+  end
+
+  def create_current_tile
+    @current_tile = CurrentTile.create({:x => (tile_width / 2), :y => (tile_height / 2)})
+    @current_tile.input = {
+      :left => :move_left, 
+      :right => :move_right, 
+      :up => :move_up, 
+      :down => :move_down,
+    }
+    @current_tile.width = @tile_width
+    @current_tile.height = @tile_height
   end
 
   def update
