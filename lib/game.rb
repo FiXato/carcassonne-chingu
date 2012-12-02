@@ -14,6 +14,10 @@ class Game < Chingu::Window
     create_current_tile
     create_grid
     draw_grid_background
+    puts @current_tile
+    $grid.place_tile!(@current_tile)
+    create_current_tile
+    puts $grid.tiles
   end
 
   def grid
@@ -42,7 +46,7 @@ class Game < Chingu::Window
       :up => :move_up, 
       :down => :move_down,
       :space => :rotate_clockwise,
-      :enter => :place_tile,
+      # :enter => :place_tile,
       :return => :place_tile,
     }
     @current_tile.width = @tile_width
