@@ -1,0 +1,2 @@
+# carcassonne-chingu
+Discontinued project
